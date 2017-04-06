@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Regression &#8212; Jay_IMX 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jay_IMX 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="regression">
+<h1>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>This tool is designed for local regression mission, which can be controlled and checked much more easy.
+See <a class="reference external" href="https://github.com/xiaoqiangzhao/imx_proj/tree/master/regression">Regression Code</a>.</div></blockquote>
+</div>
+<div class="section" id="quickstart">
+<h2>QuickStart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Invoke you python shell or ipython</p>
+</li>
+<li><dl class="first docutils">
+<dt>call setup script</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">for rtl regression(<a class="reference internal" href="#setup-py"><span class="std std-ref">setup.py</span></a>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">run</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">your_test_plan</span><span class="o">.</span><span class="n">xlsx</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">for power aware regression(<a class="reference internal" href="#setup-pa-py"><span class="std std-ref">setup_pa.py</span></a>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">run</span> <span class="n">setup_pa</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">your_test_plan</span><span class="o">.</span><span class="n">xlsx</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">you then will get object <code class="docutils literal"><span class="pre">re</span></code> for further operations.</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="relavantmodule">
+<h2>RelavantModule<a class="headerlink" href="#relavantmodule" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dependency">
+<h3>Dependency<a class="headerlink" href="#dependency" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Required Modules:</dt>
+<dd><ol class="first last arabic simple">
+<li>termcolor</li>
+<li>openpyxl</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="localmodule">
+<h3>LocalModule<a class="headerlink" href="#localmodule" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="plananalysis">
+<h4>PlanAnalysis<a class="headerlink" href="#plananalysis" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>This module is used to analysis Freescale-Style XLSX based test plan.
+For any other sytle, you can extend from this class and override method <code class="docutils literal"><span class="pre">self.parser</span></code></div></blockquote>
+<div class="section" id="usage">
+<h5>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h5>
+<p>Example code</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PlanAnalysis</span> <span class="k">import</span> <span class="n">XlsxParser</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">xlsx_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">XlsxParser</span><span class="p">(</span><span class="n">xlsx_file</span><span class="p">)</span>
+<span class="n">test</span><span class="o">.</span><span class="n">parser</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here, we will generate an <code class="docutils literal"><span class="pre">json</span></code> file as the result, we can also refer to that file by <code class="docutils literal"><span class="pre">test.json_file</span></code> for further use.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="source-code-ref">
+<h2>Source Code Ref<a class="headerlink" href="#source-code-ref" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" id="setup-py">
+<li>setup.py(<a class="reference download internal" href="_downloads/setup.py" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>).</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! /home/b51816/local/bin/python3</span>
+<span class="kn">from</span> <span class="nn">SubmitJobs</span> <span class="k">import</span> <span class="n">SubmitJobs</span>
+<span class="kn">from</span> <span class="nn">PlanAnalysis</span> <span class="k">import</span> <span class="n">XlsxParser</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">xlsx_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">XlsxParser</span><span class="p">(</span><span class="n">xlsx_file</span><span class="p">)</span>
+<span class="n">test</span><span class="o">.</span><span class="n">parser</span><span class="p">()</span>
+
+<span class="n">re</span> <span class="o">=</span> <span class="n">SubmitJobs</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">json_file</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">generate_compile_sh</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;null&#39;</span> <span class="p">:</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">generate_simulate_sh</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">gen_results</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" id="setup-pa-py">
+<li>setup_pa.py(<a class="reference download internal" href="_downloads/setup_pa.py" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>)</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! /home/b51816/local/bin/python3</span>
+<span class="kn">from</span> <span class="nn">SubmitJobs</span> <span class="k">import</span> <span class="n">SubmitJobs</span>
+<span class="kn">from</span> <span class="nn">PlanAnalysis</span> <span class="k">import</span> <span class="n">XlsxParser</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">xlsx_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">XlsxParser</span><span class="p">(</span><span class="n">xlsx_file</span><span class="p">)</span>
+<span class="n">test</span><span class="o">.</span><span class="n">parser</span><span class="p">()</span>
+
+<span class="n">re</span> <span class="o">=</span> <span class="n">SubmitJobs</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">json_file</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">generate_compile_sh</span><span class="p">(</span><span class="n">lps</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;null&#39;</span> <span class="p">:</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">generate_simulate_sh</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">lps</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">gen_results</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Regression</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#quickstart">QuickStart</a></li>
+<li><a class="reference internal" href="#relavantmodule">RelavantModule</a><ul>
+<li><a class="reference internal" href="#dependency">Dependency</a></li>
+<li><a class="reference internal" href="#localmodule">LocalModule</a><ul>
+<li><a class="reference internal" href="#plananalysis">PlanAnalysis</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#source-code-ref">Source Code Ref</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/REGRESSION.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Jay_IMX 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Jay Zhao.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>

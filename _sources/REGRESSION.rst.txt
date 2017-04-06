@@ -1,0 +1,68 @@
+Regression
+###########
+
+Overview
+=============
+  This tool is designed for local regression mission, which can be controlled and checked much more easy.
+  See `Regression Code`_.
+
+
+QuickStart
+===========
+  #. Invoke you python shell or ipython
+  #. call setup script
+       #. for rtl regression(:ref:`setup.py <setup.py>`) ::
+
+                 >>> run setup.py <your_test_plan.xlsx>
+
+       #. for power aware regression(:ref:`setup_pa.py <setup_pa.py>`) ::
+
+                 >>> run setup_pa.py <your_test_plan.xlsx>
+
+  #. you then will get object ``re`` for further operations.
+
+RelavantModule
+==============
+
+Dependency
+^^^^^^^^^^^^^^
+Required Modules:
+  #. termcolor
+  #. openpyxl
+
+LocalModule
+^^^^^^^^^^^^^
+PlanAnalysis
+--------------
+  This module is used to analysis Freescale-Style XLSX based test plan.
+  For any other sytle, you can extend from this class and override method ``self.parser``
+
+Usage
+*********
+Example code ::
+  
+   import sys
+   from PlanAnalysis import XlsxParser
+   import sys
+   xlsx_file = sys.argv[1]
+   test = XlsxParser(xlsx_file)
+   test.parser()
+
+Here, we will generate an ``json`` file as the result, we can also refer to that file by ``test.json_file`` for further use.
+
+
+Source Code Ref
+===============
+.. _setup.py:
+
+#. setup.py(:download:`download <source/setup.py>`).
+
+  .. literalinclude:: source/setup.py
+
+.. _setup_pa.py:
+
+#. setup_pa.py(:download:`download <source/setup_pa.py>`)
+
+  .. literalinclude:: source/setup_pa.py
+
+.. _Regression Code: https://github.com/xiaoqiangzhao/imx_proj/tree/master/regression

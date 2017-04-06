@@ -1,14 +1,17 @@
-.. test documentation master file, created by
-   sphinx-quickstart on Wed Apr  5 23:26:04 2017.
+.. Jay_IMX documentation master file, created by
+   sphinx-quickstart on Wed Apr  5 15:18:47 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to test's documentation!
-================================
+Welcome to Jay_IMX's documentation!
+===================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   Introduction
+   REGRESSION
 
 
 
