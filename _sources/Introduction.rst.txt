@@ -1,0 +1,14 @@
+Introduction 
+############
+
+This doc is used to describe some python-based tools for Freescale i.MX project ENV.
+
+You can find all source code in `JAY's GIT`_.
+
+If any question, please contact **zq496547199@126.com**.
+
+.. _JAY's GIT: https://github.com/xiaoqiangzhao/imx_proj
+
+
+
+
